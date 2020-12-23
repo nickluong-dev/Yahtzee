@@ -428,8 +428,6 @@ def check_combos(update_choice: list, rolls: list, inventory: list) -> list:
     (['2', '3', '3', '4', '5'], 17)]
     """
 
-    # IT WORKS.
-
     all_die = "".join(str(nums) for nums in sorted(inventory + rolls))
     apply_points_to_index = update_choice[1]
 
@@ -440,7 +438,7 @@ def check_combos(update_choice: list, rolls: list, inventory: list) -> list:
     full_house = re.compile(r'([1-6])\1{2}([1-6])\2').findall(all_die) or \
         re.compile(r'([1-6])\1([1-6])\2{2}').findall(all_die)  # if the three of a kind is first or second
     small_straight = re.compile(r'(11234|12234|12334|12344|22345|23345|23445|23455|33456|34456|34556|34566)')\
-        .findall(all_die)  # I know Chris...
+        .findall(all_die) 
     large_straight = re.compile(r'(12345|23456)').findall(all_die)
     yahtzee = re.compile(r'([1-6])\1{4}').findall(all_die)
 
