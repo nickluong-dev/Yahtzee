@@ -17,7 +17,7 @@ class TestCheckWinner(TestCase):
                                          'Three of a Kind': 13, 'Four of a Kind': 16, 'Full House': 25,
                                          'Small Straight': 0, 'Large Straight': 40, 'YAHTZEE': 50, 'Chance': 12}}
         check_winner(player_one, player_one_score, player_two, player_two_score)
-        expected = "player_one wins! You scored: 222. You absorb player two's soul and become stronger.\n"
+        expected = "player_one wins! You scored: 222.\n"
         self.assertEqual(expected, mock_output.getvalue())
 
     @patch('sys.stdout', new_callable=io.StringIO)
@@ -31,8 +31,7 @@ class TestCheckWinner(TestCase):
                                          'Three of a Kind': 13, 'Four of a Kind': 16, 'Full House': 25,
                                          'Small Straight': 0, 'Large Straight': 40, 'YAHTZEE': 50, 'Chance': 12}}
         check_winner(player_one, player_one_score, player_two, player_two_score)
-        expected = "player_two wins! You scored: 186. You attack player one's life points directly, \n" \
-                   "sending him to the shadow realm.\n"
+        expected = "player_two wins! You scored: 186.\n"
         self.assertEqual(expected, mock_output.getvalue())
 
     @patch('sys.stdout', new_callable=io.StringIO)
@@ -46,5 +45,5 @@ class TestCheckWinner(TestCase):
                                          'Three of a Kind': 12, 'Four of a Kind': 16, 'Full House': 25,
                                          'Small Straight': 30, 'Large Straight': 40, 'YAHTZEE': 0, 'Chance': 19}}
         check_winner(player_one, player_one_score, player_two, player_two_score)
-        expected = "Both players scored 172. . .You both turn to dust, snapped out of existence.\n"
+        expected = "Both players scored 172. That's a tie!\n"
         self.assertEqual(expected, mock_output.getvalue())
